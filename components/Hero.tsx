@@ -15,7 +15,7 @@ export default function Hero({ title, subtitle, image, primary, secondary }:{
           {subtitle && <p className="hero-subtitle">{subtitle}</p>}
           {(primary||secondary) && (
             <div className="hero-cta">
-              {primary && <Link href={primary.href} className="btn button--primary btn--large">{primary.text}</Link>}
+              {primary && <Link href={primary.href} className="btn btn--primary btn--large">{primary.text}</Link>}
               {secondary && <Link href={secondary.href} className="btn btn--large">{secondary.text}</Link>}
             </div>
           )}

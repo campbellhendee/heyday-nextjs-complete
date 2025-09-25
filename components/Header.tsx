@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+const MobileNav = dynamic(()=> import('./MobileNav'), { ssr:false })
 import { BRAND } from '@/lib/brand'
 
 export default function Header(){
@@ -18,10 +20,12 @@ export default function Header(){
           <Image src="/logo.svg" alt="" aria-hidden width={120} height={30} priority />
           <span className="sr-only">{BRAND.name}</span>
         </Link>
-        <nav aria-label="Primary" style={{display:'flex',gap:12,flexWrap:'wrap',alignItems:'center'}}>
+        <nav aria-label="Primary" className="nav-list" style={{display:'flex',gap:12,flexWrap:'wrap',alignItems:'center'}}>
           {BRAND.nav.map(i=> (<Link key={i.href} className="btn" href={i.href}>{i.name}</Link>))}
           <a className="btn btn--primary" href={BRAND.email.href}>Start Inquiry</a>
         </nav>
+        {/* Mobile navigation */}
+        <MobileNav />
       </div>
     </header>
   )
