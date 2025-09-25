@@ -2,10 +2,9 @@
 import { useState } from 'react'
 import ColorFilter from '@/components/ColorFilter'
 import GalleryGrid from '@/components/GalleryGrid'
+import type { Pic } from '@/lib/galleries'
 
-type Item = { src: string; alt: string; color?: string }
-
-export default function WeddingsPortfolio({ items }:{ items: ReadonlyArray<Item> }){
+export default function WeddingsPortfolio({ items }:{ items: ReadonlyArray<Pic> }){
   const [filter,setFilter] = useState<'all'|'neutral'|'blush'|'bold'|'greenery'>('all')
   return (
     <>

@@ -1,15 +1,21 @@
 {
-  "name": "Heyday Flower Co.",
+  "name": "Heyday Flower Co",
   "short_name": "Heyday",
+  "description": "Custom floral artistry for celebrations and refined spaces in Houston",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#111111",
+  "theme_color": "#8EA693",
+  "background_color": "#FAF9F7",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "type": "image/svg+xml",
-      "sizes": "any"
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }

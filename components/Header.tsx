@@ -3,29 +3,75 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import { usePathname } from 'next/navigation'
 const MobileNav = dynamic(()=> import('./MobileNav'), { ssr:false })
 import { BRAND } from '@/lib/brand'
 
 export default function Header(){
-  const [scrolled,setScrolled]=useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+
   useEffect(()=>{
-    const onScroll=()=>setScrolled(window.scrollY>10)
-    window.addEventListener('scroll',onScroll)
-    return ()=>window.removeEventListener('scroll',onScroll)
+    const handleScroll = () => setScrolled(window.scrollY > 12)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   },[])
+
   return (
-    <header style={{position:'sticky',top:0,zIndex:50,backdropFilter:scrolled?'blur(6px)':'none',background:'rgba(255,255,255,.9)',borderBottom:'1px solid var(--border)'}}> 
-      <div className="container" style={{display:'flex',justifyContent:'space-between',alignItems:'center',paddingBlock:16,gap:12,flexWrap:'wrap'}}>
-        <Link href="/" className="logo" aria-label={BRAND.name} style={{display:'inline-flex',alignItems:'center',gap:8}}>
-          <Image src="/logo.svg" alt="" aria-hidden width={120} height={30} priority />
+    <header className="site-header" data-scrolled={scrolled ? 'true' : 'false'}>
+      <div className="site-header__ribbon" aria-label="Studio availability">
+        <div className="container site-header__ribbon-inner">
+          <p className="site-header__tagline">{BRAND.tagline} — {BRAND.availability}</p>
+          <div className="site-header__contact">
+            <a href={BRAND.phone.href} className="site-header__contact-link" aria-label={`Call ${BRAND.name} at ${BRAND.phone.display}`}>
+              <span aria-hidden="true">Call</span> {BRAND.phone.display}
+            </a>
+            <span className="site-header__divider" aria-hidden>&bull;</span>
+            <a href={BRAND.email.href} className="site-header__contact-link">Email the studio</a>
+          </div>
+        </div>
+      </div>
+      <div className="container site-header__bar">
+        <Link href="/" className="site-logo" aria-label={BRAND.name}>
+          <Image src="/logo.svg" alt="" width={144} height={36} priority />
           <span className="sr-only">{BRAND.name}</span>
         </Link>
-        <nav aria-label="Primary" className="nav-list" style={{display:'flex',gap:12,flexWrap:'wrap',alignItems:'center'}}>
-          {BRAND.nav.map(i=> (<Link key={i.href} className="btn" href={i.href}>{i.name}</Link>))}
-          <a className="btn btn--primary" href={BRAND.email.href}>Start Inquiry</a>
+        <nav aria-label="Primary" className="site-header__nav">
+          {BRAND.nav.map((item)=>{
+            const isActive = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`site-header__nav-link${isActive ? ' is-active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {item.name}
+              </Link>
+            )
+          })}
         </nav>
-        {/* Mobile navigation */}
-        <MobileNav />
+        <div className="site-header__actions">
+          <nav aria-label="Secondary" className="site-header__secondary-nav">
+            {BRAND.secondaryNav.map(({ href, name })=>{
+              const isActive = pathname === href
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`site-header__secondary-link${isActive ? ' is-active' : ''}`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {name}
+                </Link>
+              )
+            })}
+          </nav>
+          <Link className="btn btn--primary btn--large" href="/inquiry">
+            Start Inquiry
+          </Link>
+          <MobileNav />
+        </div>
       </div>
     </header>
   )

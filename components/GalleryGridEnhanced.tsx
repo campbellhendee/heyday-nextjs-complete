@@ -19,7 +19,12 @@ export default function GalleryGridEnhanced({ images, selectedColor='all', colum
         ))}
       </div>
       {lightboxIndex!==null && (
-        <Lightbox images={filtered} initialIndex={lightboxIndex} onClose={()=>setLightboxIndex(null)}/>
+        <Lightbox
+          images={filtered}
+          currentIndex={lightboxIndex}
+          onNavigate={setLightboxIndex}
+          onClose={()=>setLightboxIndex(null)}
+        />
       )}
     </>
   )

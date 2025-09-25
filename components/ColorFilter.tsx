@@ -1,28 +1,72 @@
-
 'use client'
-import { useState } from 'react'
+
+import { useEffect, useId, useState } from 'react'
 import type { ColorFilterKey } from './GalleryGrid'
 
-const options: { key: ColorFilterKey; label: string }[] = [
-  { key: 'all', label: 'All' },
-  { key: 'neutral', label: 'Neutral/White' },
-  { key: 'blush', label: 'Blush/Pastel' },
-  { key: 'bold', label: 'Bold/Color' },
+const OPTIONS: Array<{ key: ColorFilterKey; label: string; aria?: string }> = [
+  { key: 'all', label: 'All palettes', aria: 'Show all color palettes' },
+  { key: 'neutral', label: 'Neutral / White' },
+  { key: 'blush', label: 'Blush / Pastel' },
+  { key: 'bold', label: 'Bold / Color' },
   { key: 'greenery', label: 'Greenery' },
 ]
 
-export default function ColorFilter({ onChange, initial='all' }:{ onChange?:(f:ColorFilterKey)=>void; initial?:ColorFilterKey }){
-  const [sel,setSel]=useState<ColorFilterKey>(initial)
+type ColorFilterProps = {
+  initial?: ColorFilterKey
+  onChange?: (value: ColorFilterKey) => void
+  label?: string
+}
+
+export default function ColorFilter({ initial = 'all', onChange, label = 'Filter gallery by color palette' }: ColorFilterProps){
+  const [selected, setSelected] = useState<ColorFilterKey>(initial)
+  const groupId = useId()
+
+  const activeOption = OPTIONS.find((option)=> option.key === selected) ?? OPTIONS[0]
+
+  useEffect(()=>{
+    setSelected(initial)
+  },[initial])
+
+  const handleSelect = (value: ColorFilterKey) => {
+    if(value === selected) return
+    setSelected(value)
+    onChange?.(value)
+  }
+
   return (
-    <div role="toolbar" aria-label="Filter by palette" style={{display:'flex',gap:8,flexWrap:'wrap',marginBottom:12}} data-color-filter>
-      {options.map(o=>(
-        <button key={o.key} className="btn" type="button"
-          data-chip={o.key} aria-selected={sel===o.key}
-          onClick={()=>{ setSel(o.key); onChange?.(o.key) }}
-          style={ sel===o.key ? {background:'var(--ink)',color:'#fff',borderColor:'var(--ink)'} : {} }>
-          {o.label}
-        </button>
-      ))}
+    <div className="color-filter-shell">
+      <div className="color-filter__legend" role="status" aria-live="polite">
+        <span className="color-filter__legend-label">Palette:</span>
+        <span>{activeOption.label}</span>
+      </div>
+      <div
+        role="group"
+        aria-label={label}
+        className="color-filter"
+        data-color-filter
+        id={groupId}
+      >
+        {OPTIONS.map((option)=>(
+          <button
+            key={option.key}
+            type="button"
+            className="btn color-filter__chip"
+            data-chip={option.key}
+            data-state={selected === option.key ? 'on' : 'off'}
+            aria-pressed={selected === option.key}
+            aria-label={option.aria ?? option.label}
+            onClick={()=>handleSelect(option.key)}
+          >
+            <span className="color-filter__dot" aria-hidden data-color={option.key} />
+            <span>{option.label}</span>
+            {selected === option.key ? (
+              <span className="color-filter__chip-indicator" aria-hidden>
+                Selected
+              </span>
+            ) : null}
+          </button>
+        ))}
+      </div>
     </div>
   )
 }

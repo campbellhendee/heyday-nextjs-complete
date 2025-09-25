@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero'
 import Link from 'next/link'
 import Image from 'next/image'
+import { HERO_IMAGES } from '@/lib/visuals'
 
 const posts = [
   { slug:'spring-wedding-flowers-2024', title:'Spring Wedding Flowers: 2024 Trends', excerpt:'Discover the most requested blooms and color palettes for spring weddings this year.', image:'/images/blog/spring-trends.jpg', date:'2024-03-15', category:'Wedding Trends' },
@@ -11,7 +12,12 @@ const posts = [
 export default function JournalPage(){
   return (
     <>
-      <Hero title="Journal" subtitle="Insights and inspiration from our studio" image="/images/hero/journal.jpg"/>
+      <Hero
+        title="Journal"
+        subtitle="Insights and inspiration from our studio"
+        image={HERO_IMAGES.journal.src}
+        imageAlt={HERO_IMAGES.journal.alt}
+      />
       <section className="blog-section">
         <div className="container">
           <div className="blog-grid">

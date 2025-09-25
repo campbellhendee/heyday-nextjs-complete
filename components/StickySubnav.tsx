@@ -23,7 +23,13 @@ export default function StickySubnav(){
     <nav aria-label="Weddings sections" style={{position:'sticky',top:64,background:'var(--surface)',borderBottom:'1px solid var(--border)',zIndex:40}}>
       <div className="container" style={{display:'flex',gap:12,paddingBlock:12,flexWrap:'wrap'}}>
         {SECTIONS.map(s=>(
-          <a key={s.id} href={`#${s.id}`} className={active===s.id?'btn button--primary':'btn'}>{s.label}</a>
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            className={active===s.id ? 'btn btn--primary' : 'btn btn--ghost'}
+          >
+            {s.label}
+          </a>
         ))}
       </div>
     </nav>
