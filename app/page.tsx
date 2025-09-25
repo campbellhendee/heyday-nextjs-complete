@@ -1,32 +1,36 @@
-import ColorFilter from '../components/ColorFilter'
-import GalleryGrid from '../components/GalleryGrid'
-import StickySubnav from '../components/StickySubnav'
+import Hero from '@/components/Hero'
+import ServicesGrid from '@/components/ServicesGrid'
+import GalleryGrid from '@/components/GalleryGrid'
+import CTAStrip from '@/components/CTAStrip'
+import { BRAND } from '@/lib/brand'
+
+export const metadata = {
+  title: `${BRAND.name} — Luxury Floral Design in Houston`,
+  description:
+    'Elevated floral design for weddings, corporate and private events, and daily arrangements. Houston, Texas — by appointment.',
+}
 
 export default function HomePage(){
   return (
     <>
-      <section className="hero container" id="overview" data-reveal>
-        <h1>Heyday Flower Co</h1>
-        <p>Luxury floral design for weddings, brands, private dinners, and daily arrangements.</p>
+      <Hero
+        title="Elevated Floral Design"
+        subtitle="Creating unforgettable moments through the art of floristry"
+        image="/images/hero/home-hero.jpg"
+        primary={{ text:'Start Your Inquiry', href: 'mailto:HeydayFlowerCo@gmail.com' }}
+        secondary={{ text:'View Weddings', href:'/weddings' }}
+      />
+
+      <ServicesGrid />
+
+      <section className="gallery-section">
+        <div className="container">
+          <h2 style={{marginBottom:12}}>Recent Celebrations</h2>
+          <GalleryGrid />
+        </div>
       </section>
 
-      <StickySubnav />
-
-      <section className="container" id="portfolio" data-reveal>
-        <h2>Portfolio</h2>
-        <ColorFilter />
-        <GalleryGrid />
-      </section>
-
-      <section className="container" id="process" data-reveal>
-        <h2>Process</h2>
-        <p>From concept to celebration, we partner closely to craft bespoke floral experiences.</p>
-      </section>
-
-      <section className="container" id="investment" data-reveal>
-        <h2>Investment</h2>
-        <p>Custom proposals tailored to your event and vision.</p>
-      </section>
+      <CTAStrip />
     </>
   )
 }
