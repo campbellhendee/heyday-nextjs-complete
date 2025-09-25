@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
-import HeroRotator from '@/components/HeroRotator'
-import WeddingsPortfolio from '@/components/WeddingsPortfolio'
-import CTAStrip from '@/components/CTAStrip'
+import Image from 'next/image'
+import Link from 'next/link'
 import { weddings } from '@/lib/galleries'
-import { HERO_ROTATIONS } from '@/lib/visuals'
 import { BRAND } from '@/lib/brand'
-
-const WEDDINGS_OG = HERO_ROTATIONS.weddings[0]?.src ?? '/images/hero/weddings.jpg'
 
 export const metadata: Metadata = {
   title: 'Weddings',
@@ -19,68 +15,68 @@ export const metadata: Metadata = {
     url: '/weddings',
     type: 'website',
     siteName: BRAND.name,
-    images: [{ url: WEDDINGS_OG, width: 1600, height: 900, alt: 'Heyday Flower Co wedding installation' }],
+    images: [{ url: '/images/hero/weddings.jpg', width: 1600, height: 900, alt: 'Heyday Flower Co wedding installation' }],
   },
   twitter: {
     title: 'Weddings — Heyday Flower Co',
     description: 'Ceremony architecture, reception installations, and personal flowers tailored to your celebration.',
-    images: [WEDDINGS_OG],
+    images: ['/images/hero/weddings.jpg'],
   },
 }
 
 export default function Weddings(){
   return (
     <>
-      <HeroRotator
-        images={HERO_ROTATIONS.weddings}
-        eyebrow="Weddings"
-        title="Timeless florals for the modern couple"
-        sub="Romantic blooms, lush installations, and intentional details from welcome party to farewell brunch."
-        primaryCta={{ label: 'Start Your Inquiry', href: 'mailto:HeydayFlowerCo@gmail.com' }}
-        secondaryCta={{ label: 'View Corporate Events', href: '/corporate-events' }}
-        align="start"
-      />
-      <section className="page-section" data-reveal>
-        <div className="container stack">
-          <header className="pinch">
-            <h2>Our wedding floral services</h2>
-            <p>From grand ceremony architecture to detailed personal flowers, every design is bespoke to your celebration.</p>
-          </header>
-          <ul className="bullet-list">
-            <li>Bouquets, personals, and curated ceremony party styling</li>
-            <li>Statement ceremony installations and aisle treatments</li>
-            <li>Reception tablescapes, suspended florals, and dance floor moments</li>
-            <li>Weekend experiences including welcome party and farewell brunch</li>
-          </ul>
+      <section className="hero">
+        <div className="hero-image">
+          <Image 
+            src="/images/hero/weddings.jpg" 
+            alt="" 
+            fill
+            priority
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+        <div className="hero-overlay" />
+        <div className="hero-content">
+          <h1 className="hero-title">Weddings</h1>
+          <p className="hero-subtitle">Timeless Florals for Modern Couples</p>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Wedding Portfolio</h2>
+            <p className="section-subtitle">
+              Explore a range of palettes and settings from downtown penthouses to countryside estates.
+            </p>
+          </div>
+          {weddings.length > 0 && (
+            <div className="gallery">
+              {weddings.map((image, index) => (
+                <div key={index} className="gallery-item">
+                  <Image 
+                    src={typeof image === 'string' ? image : image.src}
+                    alt=""
+                    width={500}
+                    height={500}
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="page-section" data-reveal>
-        <div className="container stack">
-          <header className="pinch">
-            <h2>Portfolio</h2>
-            <p>Explore a range of palettes and settings from downtown penthouses to countryside estates.</p>
-          </header>
-          <WeddingsPortfolio items={weddings} />
+      <section className="cta">
+        <div className="container">
+          <h2 className="cta-title">Ready to Discuss Your Wedding Flowers?</h2>
+          <Link href="/inquiry" className="btn">
+            Start Your Inquiry
+          </Link>
         </div>
       </section>
-
-      <section className="page-section" data-reveal>
-        <div className="container stack">
-          <header className="pinch">
-            <h2>The Heyday process</h2>
-            <p>Our collaborative approach keeps you informed and inspired from first call through strike.</p>
-          </header>
-          <ol className="number-list">
-            <li>Inquiry &amp; discovery call to align on vision, priorities, and investment.</li>
-            <li>Concept design with moodboards, palettes, and preliminary space planning.</li>
-            <li>Production management, vendor coordination, and on-site styling logistics.</li>
-            <li>Wedding day installation, refreshes, and post-event strike handled by our team.</li>
-          </ol>
-        </div>
-      </section>
-
-      <CTAStrip text="Ready to discuss your wedding flowers?" button="Book a consultation" />
     </>
   )
 }
