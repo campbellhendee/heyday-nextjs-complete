@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import HeroRotator from '@/components/HeroRotator'
-import GalleryGrid from '@/components/GalleryGrid'
+import Gallery from '@/components/Gallery'
 import CTAStrip from '@/components/CTAStrip'
-import { privateEvents } from '@/lib/galleries'
 import { HERO_ROTATIONS } from '@/lib/visuals'
 import { BRAND } from '@/lib/brand'
 
@@ -60,7 +59,8 @@ export default function Private(){
             <h2>Gallery</h2>
             <p>Recent private dinners, soirées, and milestones across Houston and beyond.</p>
           </header>
-          <GalleryGrid items={privateEvents} />
+          <Gallery category="private" />
+          {/* <GalleryGrid items={privateEvents} /> */}
         </div>
       </section>
 

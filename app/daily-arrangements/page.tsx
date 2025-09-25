@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import HeroRotator from '@/components/HeroRotator'
-import GalleryGrid from '@/components/GalleryGrid'
+import Gallery from '@/components/Gallery'
 import CTAStrip from '@/components/CTAStrip'
-import { daily } from '@/lib/galleries'
 import { HERO_ROTATIONS } from '@/lib/visuals'
 import { BRAND } from '@/lib/brand'
 
@@ -60,7 +59,8 @@ export default function Daily(){
             <h2>Gallery</h2>
             <p>Signature color palettes and vessels designed to harmonize with your interiors.</p>
           </header>
-          <GalleryGrid items={daily} />
+          <Gallery category="daily" />
+          {/* <GalleryGrid items={daily} /> */}
         </div>
       </section>
 

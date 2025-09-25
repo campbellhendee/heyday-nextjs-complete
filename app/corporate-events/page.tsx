@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import HeroRotator from '@/components/HeroRotator'
-import GalleryGrid from '@/components/GalleryGrid'
+import Gallery from '@/components/Gallery'
 import CTAStrip from '@/components/CTAStrip'
-import { corporate } from '@/lib/galleries'
 import { HERO_ROTATIONS } from '@/lib/visuals'
 import { BRAND } from '@/lib/brand'
 
@@ -61,7 +60,10 @@ export default function Corporate(){
             <h2>Selected work</h2>
             <p>Recent collaborations spanning conferences, galas, brand launches, and destination incentives.</p>
           </header>
-          <GalleryGrid items={corporate} />
+          {/* Use filesystem-backed gallery for all images present in public/images/gallery/corporate */}
+          <Gallery category="corporate" />
+          {/* Keep the curated, color-filterable grid below if you want an editorial subset */}
+          {/* <GalleryGrid items={corporate} /> */}
         </div>
       </section>
 
