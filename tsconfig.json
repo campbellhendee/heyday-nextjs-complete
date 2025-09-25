@@ -37,6 +37,7 @@
   ],
   "exclude": [
     "node_modules",
-    "heyday-flower-co"
+    "heyday-flower-co",
+    "public"
   ]
 }
