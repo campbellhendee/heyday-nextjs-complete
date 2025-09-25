@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "next build"
+    "vercel-build": "next build",
+    "curation:plan": "node scripts/curation-plan.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.544.0",
@@ -20,6 +21,7 @@
     "@types/react": "18.3.5",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.12",
-    "typescript": "5.6.3"
+    "typescript": "5.6.3",
+    "ts-node": "10.9.2"
   }
 }
