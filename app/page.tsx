@@ -28,7 +28,14 @@ export default function HomePage(){
       <section className="gallery-section">
         <div className="container">
           <h2 style={{marginBottom:12}}>Recent Celebrations</h2>
-          <GalleryGrid />
+          <GalleryGrid items={[
+            { src:'/images/gallery/weddings/weddings-001.jpg', alt:'Wedding floral arrangement or installation', color:'neutral,greenery' },
+            { src:'/images/gallery/corporate/corporate-001.jpg', alt:'Corporate event floral installation or centerpiece', color:'bold,greenery' },
+            { src:'/images/gallery/private/private-001.jpg', alt:'Private event floral arrangement', color:'blush,neutral' },
+            { src:'/images/gallery/daily/daily-001.jpg', alt:'Daily floral arrangement in vase', color:'neutral,greenery' },
+            { src:'/images/gallery/weddings/weddings-002.jpg', alt:'Wedding floral arrangement or installation', color:'neutral,greenery' },
+            { src:'/images/gallery/daily/daily-002.jpg', alt:'Daily floral arrangement in vase', color:'neutral,greenery' },
+          ]} />
         </div>
       </section>
 

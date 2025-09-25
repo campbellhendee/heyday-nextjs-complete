@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero'
-import ColorFilter from '@/components/ColorFilter'
-import GalleryGrid from '@/components/GalleryGrid'
+import WeddingsPortfolio from '@/components/WeddingsPortfolio'
 import CTAStrip from '@/components/CTAStrip'
+import { weddingsGallery } from '@/public/images/_curation/weddings.gallery'
 
 export const metadata = {
   title: 'Weddings',
@@ -23,8 +23,7 @@ export default function Weddings(){
       </section>
       <section className="container" data-reveal>
         <h2>Portfolio</h2>
-        <ColorFilter />
-        <GalleryGrid />
+        <WeddingsPortfolio items={weddingsGallery} />
       </section>
       <section className="container" data-reveal>
         <h2>How we work</h2>

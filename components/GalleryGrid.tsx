@@ -12,7 +12,7 @@ const defaults: Item[] = [
 
 export type ColorFilterKey = 'all'|'neutral'|'blush'|'bold'|'greenery'
 
-export default function GalleryGrid({ items = defaults, filter='all' }:{ items?: Item[]; filter?: ColorFilterKey }){
+export default function GalleryGrid({ items = defaults, filter='all' }:{ items?: ReadonlyArray<Item>; filter?: ColorFilterKey }){
   const visible = (colors?: string) => {
     if(filter==='all' || !colors) return true
     return colors.toLowerCase().includes(filter)
@@ -22,7 +22,7 @@ export default function GalleryGrid({ items = defaults, filter='all' }:{ items?:
       <ul className="masonry" aria-label="Gallery">
         {items.filter(i=>visible(i.color)).map((i,idx)=> (
           <li key={idx} className="card" data-color={i.color}>
-            <img src={i.src} alt={i.color ? `${i.color} floral arrangement` : 'Floral arrangement'} loading="lazy" />
+            <img src={i.src} alt={i.alt || (i.color ? `${i.color} floral arrangement` : 'Floral arrangement')} loading="lazy" />
           </li>
         ))}
       </ul>
