@@ -30,7 +30,6 @@ export const BRAND = {
     { name: 'Daily Arrangements', href: '/daily-arrangements' },
   ],
   secondaryNav: [
-    { name: 'Journal', href: '/journal' },
     { name: 'Inquiry', href: '/inquiry' },
   ],
 } as const;
