@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero'
 import WeddingsPortfolio from '@/components/WeddingsPortfolio'
 import CTAStrip from '@/components/CTAStrip'
-import { weddingsGallery } from '@/public/images/_curation/weddings.gallery'
+import { getWeddingsGallery } from '@/lib/galleries'
 
 export const metadata = {
   title: 'Weddings',
@@ -23,7 +23,7 @@ export default function Weddings(){
       </section>
       <section className="container" data-reveal>
         <h2>Portfolio</h2>
-        <WeddingsPortfolio items={weddingsGallery} />
+        <WeddingsPortfolio items={getWeddingsGallery()} />
       </section>
       <section className="container" data-reveal>
         <h2>How we work</h2>

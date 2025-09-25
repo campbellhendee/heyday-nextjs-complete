@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero'
 import GalleryGrid from '@/components/GalleryGrid'
 import CTAStrip from '@/components/CTAStrip'
-import { corporateGallery } from '@/public/images/_curation/corporate.gallery'
+import { getCorporateGallery } from '@/lib/galleries'
 
 export const metadata = {
   title: 'Corporate Events',
@@ -23,7 +23,7 @@ export default function Corporate(){
       </section>
       <section className="container" data-reveal>
         <h2>Selected work</h2>
-        <GalleryGrid items={corporateGallery} />
+        <GalleryGrid items={getCorporateGallery()} />
       </section>
       <CTAStrip text="Let's create something extraordinary" />
     </>

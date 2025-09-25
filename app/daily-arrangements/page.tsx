@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero'
 import GalleryGrid from '@/components/GalleryGrid'
 import CTAStrip from '@/components/CTAStrip'
-import { dailyGallery } from '@/public/images/_curation/daily.gallery'
+import { getDailyGallery } from '@/lib/galleries'
 
 export const metadata = {
   title: 'Daily Arrangements',
@@ -22,7 +22,7 @@ export default function Daily(){
       </section>
       <section className="container" data-reveal>
         <h2>Gallery</h2>
-        <GalleryGrid items={dailyGallery} />
+        <GalleryGrid items={getDailyGallery()} />
       </section>
       <CTAStrip text="Inquire about subscriptions" />
     </>

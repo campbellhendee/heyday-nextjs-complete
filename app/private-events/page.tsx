@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero'
 import GalleryGrid from '@/components/GalleryGrid'
 import CTAStrip from '@/components/CTAStrip'
-import { privateGallery } from '@/public/images/_curation/private.gallery'
+import { getPrivateGallery } from '@/lib/galleries'
 
 export const metadata = {
   title: 'Private Events',
@@ -22,7 +22,7 @@ export default function Private(){
       </section>
       <section className="container" data-reveal>
         <h2>Gallery</h2>
-        <GalleryGrid items={privateGallery} />
+        <GalleryGrid items={getPrivateGallery()} />
       </section>
       <CTAStrip text="Let's design something special" />
     </>
