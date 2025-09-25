@@ -14,7 +14,7 @@ export default function Footer(){
         </nav>
         <div style={{display:'flex',gap:12,flexWrap:'wrap',alignItems:'center'}}>
           <a className="btn" href={BRAND.phone.href}>{BRAND.phone.display}</a>
-          <a className="btn button--primary" href={BRAND.email.href}>Email Us</a>
+          <a className="btn btn--primary" href={BRAND.email.href}>Email Us</a>
         </div>
       </div>
       <div className="container" style={{paddingBottom:24,color:'#777',fontSize:14}}>

@@ -18,6 +18,23 @@ export const metadata: Metadata = {
   description:
     'Elevated floral design for weddings, corporate and private events, and daily arrangements. Houston, Texas — by appointment.',
   robots: { index: true, follow: true },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
+  manifest: '/site.webmanifest',
+  openGraph: {
+    title: `${BRAND.name} — Luxury Floral Design in Houston`,
+    description: 'Elevated floral design for weddings, corporate and private events, and daily arrangements. Houston, Texas — by appointment.',
+    url: 'https://heyday-nextjs-complete.vercel.app/',
+    siteName: BRAND.name,
+    images: [
+      { url: '/logo.svg', width: 1200, height: 630, alt: `${BRAND.name} logo` },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }){

@@ -18,12 +18,11 @@ export default function GalleryGrid({ items = defaults, filter='all' }:{ items?:
     return colors.toLowerCase().includes(filter)
   }
   return (
-    <section className="container" data-reveal>
-      <h2>Recent Celebrations</h2>
-      <ul className="masonry" style={{listStyle:'none',padding:0}}>
-        {items.filter(i=>visible(i.color)).map((i,idx)=>(
+    <section className="container" style={{paddingBlock:32}}>
+      <ul className="masonry" aria-label="Gallery">
+        {items.filter(i=>visible(i.color)).map((i,idx)=> (
           <li key={idx} className="card" data-color={i.color}>
-            <img src={i.src} alt={i.alt} loading="lazy"/>
+            <img src={i.src} alt={i.color ? `${i.color} floral arrangement` : 'Floral arrangement'} loading="lazy" />
           </li>
         ))}
       </ul>

@@ -1,0 +1,42 @@
+export const products = [
+  {
+    id: '1',
+    name: 'Rose Bouquet',
+    description: 'A beautiful bouquet of fresh roses, perfect for any occasion.',
+    price: 29.99,
+    imageUrl: '/images/rose-bouquet.jpg',
+    category: 'Bouquets',
+  },
+  {
+    id: '2',
+    name: 'Tulip Arrangement',
+    description: 'A vibrant arrangement of colorful tulips to brighten your day.',
+    price: 24.99,
+    imageUrl: '/images/tulip-arrangement.jpg',
+    category: 'Arrangements',
+  },
+  {
+    id: '3',
+    name: 'Sunflower Delight',
+    description: 'A cheerful display of sunflowers, ideal for summer celebrations.',
+    price: 19.99,
+    imageUrl: '/images/sunflower-delight.jpg',
+    category: 'Bouquets',
+  },
+  {
+    id: '4',
+    name: 'Lily & Orchid Mix',
+    description: 'An elegant mix of lilies and orchids for a touch of luxury.',
+    price: 34.99,
+    imageUrl: '/images/lily-orchid-mix.jpg',
+    category: 'Arrangements',
+  },
+  {
+    id: '5',
+    name: 'Seasonal Flower Box',
+    description: 'A curated selection of seasonal flowers, beautifully arranged.',
+    price: 39.99,
+    imageUrl: '/images/seasonal-flower-box.jpg',
+    category: 'Boxes',
+  },
+];

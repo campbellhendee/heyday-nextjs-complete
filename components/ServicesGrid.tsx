@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const items = [
   { title:'Weddings', image:'/images/services/weddings.jpg', href:'/weddings' },
@@ -14,7 +15,9 @@ export default function ServicesGrid(){
         <div className="services-grid">
           {items.map(it=> (
             <Link key={it.href} href={it.href} className="service-card">
-              <div className="service-card-image"><img src={it.image} alt={it.title} loading="lazy"/></div>
+              <div className="service-card-image">
+                <Image src={it.image} alt={it.title} width={800} height={600} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"/>
+              </div>
               <div className="service-card-content">
                 <h3 className="service-card-title">{it.title}</h3>
               </div>

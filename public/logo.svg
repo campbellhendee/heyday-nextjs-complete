@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>Heyday logo</title>
+  <rect width="160" height="40" rx="8" fill="white"/>
+  <g transform="translate(12,8)">
+    <circle cx="12" cy="12" r="12" fill="#111"/>
+    <path d="M8 7h2.6v4.2h6.8V7H20v10h-2.6v-4H10.6v4H8V7z" fill="white"/>
+    <text x="32" y="18" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#111">HEYDAY</text>
+  </g>
+</svg>
