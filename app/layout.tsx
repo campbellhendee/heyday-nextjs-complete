@@ -11,6 +11,7 @@ const inter = Inter({ subsets:['latin'], weight:['400','500','600'], variable:'-
 const fraunces = Fraunces({ subsets:['latin'], weight:['400','600'], variable:'--font-fraunces' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://heyday-nextjs-complete.vercel.app'),
   title: {
     default: `${BRAND.name} — Luxury Floral Design in Houston`,
     template: `%s — ${BRAND.name}`,
