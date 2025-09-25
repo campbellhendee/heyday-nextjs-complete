@@ -1,7 +1,8 @@
 import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://heyday-nextjs-complete-elevair-64e50768.vercel.app'
+  // Prefer an environment-provided canonical site URL; fall back to the default Vercel domain
+  const base = (process.env.NEXT_PUBLIC_SITE_URL || 'https://heyday-nextjs-complete.vercel.app').replace(/\/+$/, '')
   return [
     { url: `${base}/`, lastModified: new Date() },
     { url: `${base}/weddings`, lastModified: new Date() },
